@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "9000:8080"
+    volumes:
+      - ./opus-realm.json:/opt/keycloak/opus-realm.json
+    command:
+      - start-dev
+      - "-Dkeycloak.import=/opt/keycloak/opus-realm.json"

@@ -1,0 +1,12 @@
+formatting:
+  MaximumLineLength:
+    excludes: ["**/test/**"]
+  NoWildcardImports:
+    active: false
+
+style:
+  MaxLineLength:
+    excludes: ["**/test/**"]
+
+  WildcardImport:
+    active: false

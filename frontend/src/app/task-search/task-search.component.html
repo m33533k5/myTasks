@@ -1,0 +1,5 @@
+<input [(ngModel)]="searchTerm" data-testid="searchBox" id="haha">
+<button (click)="search()" data-testid="searchButton">Search</button>
+<ul>
+  <li *ngFor="let task of tasks" [attr.data-testid]="'listElement_'+task.id">{{task.title}}</li>
+</ul>

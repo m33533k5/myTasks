@@ -1,0 +1,13 @@
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="16px grid">
+    <div fxFlex="33%" fxFlex.sm="50%" fxFlex.xs="100%" *ngFor="let task of tasks">
+      <app-task-card [task]="task" class="test" (onDelete)="delete($event)"></app-task-card>
+    </div>
+  </div>
+</div>
+
+<div class="add-task-container">
+  <button class="add-button" mat-fab>
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

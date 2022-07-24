@@ -1,0 +1,48 @@
+<mat-card>
+  <input data-testid="inputTest" id="task-name" [(ngModel)]="task.title" placeholder="Task name"/>
+
+  <section ngDefaultControl class="example-section">
+    <mat-checkbox ngDefaultControl class="example-margin" [(ngModel)]="task.allDay">All Day</mat-checkbox>
+  </section>
+  <mat-card-content>
+
+    <div class="pickers-wrapper">
+      <label>Begin Date</label>
+      <div class="form-group">
+        <div class="form-date-picker">
+          <igx-date-picker ngDefaultControl #datePickerBegin name="date-picker-begin" [(ngModel)]="task.beginDate">
+          </igx-date-picker>
+        </div>
+        <div class="form-time-picker">
+          <igx-time-picker ngDefaultControl name="time-picker-begin" [(ngModel)]="task.beginDate"
+                           [disabled]="task.allDay">>
+          </igx-time-picker>
+        </div>
+      </div>
+    </div>
+
+    <div class="pickers-wrapper">
+      <label>End Date</label>
+      <div class="form-group">
+        <div class="form-date-picker">
+          <igx-date-picker ngDefaultControl #datePickerEnd name="date-picker-end" [(ngModel)]="task.endDate">
+          </igx-date-picker>
+        </div>
+        <div class="form-time-picker">
+          <igx-time-picker ngDefaultControl name="time-picker-end" [(ngModel)]="task.endDate" [disabled]="task.allDay">
+          </igx-time-picker>
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+
+  <section ngDefaultControl class="example-section">
+    <mat-checkbox ngDefaultControl class="example-margin" [(ngModel)]="task.done">Done</mat-checkbox>
+  </section>
+
+  <mat-card-actions>
+    <button mat-button (click)="save()">Save</button>
+    <button mat-button (click)="delete(task)">Delete</button>
+  </mat-card-actions>
+</mat-card>

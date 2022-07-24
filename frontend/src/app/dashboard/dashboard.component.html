@@ -1,0 +1,23 @@
+<mat-sidenav-container>
+  <mat-sidenav #drawer
+               class="sidenav"
+               [mode]="'side'" opened>
+    <mat-toolbar>Tasks</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let task of tasks"
+         routerLink="/detail/{{task.id}}">{{task.title}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    <!-- Add Content Here -->
+    <app-task-search></app-task-search>
+  </mat-sidenav-content>
+</mat-sidenav-container>

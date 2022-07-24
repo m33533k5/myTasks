@@ -1,0 +1,34 @@
+<h2>My Tasks</h2>
+<div>
+  <label for="new-task">Task title: </label>
+  <input id="new-task" #taskTitle/>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choose List</mat-label>
+      <mat-select data-testid="selectValue" [(ngModel)]="selectedListValue" name="selectedList" required>
+        <mat-option *ngFor="let list of lists" [value]="list">
+          {{list.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button
+    mat-button
+    color=primary
+    type="button"
+    data-testid="addButton"
+    (click)="add(taskTitle.value); taskTitle.value=''">Add task
+  </button>
+</div>
+
+<ul class="tasks">
+  <li id="listTask" [attr.data-testid]="'listElement_'+task.id" *ngFor="let task of tasks">
+    <app-task [task]="task"></app-task>
+    <button type="button"
+            class="delete"
+            title="delete task"
+            [attr.data-testid]="'deleteButton_'+task.id"
+            (click)="delete(task)">delete
+    </button>
+  </li>
+</ul>

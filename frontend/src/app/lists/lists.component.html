@@ -1,0 +1,26 @@
+<h2>My Lists</h2>
+<div>
+  <label for="new-lists">List name: </label>
+  <input id="new-lists" #listName/>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button
+    mat-button
+    color=primary
+    type="button"
+    data-testid="addButton"
+    (click)="add(listName.value); listName.value=''">Add list
+  </button>
+</div>
+
+<ul class="lists">
+  <li id="listsList" [attr.data-testid]="'listElement_'+list.id" *ngFor="let list of lists">
+    <app-list [list]="list"></app-list>
+    <button type="button"
+            class="delete"
+            title="delete list"
+            [attr.data-testid]="'deleteButton_'+list.id"
+            (click)="delete(list)">delete
+    </button>
+  </li>
+</ul>
